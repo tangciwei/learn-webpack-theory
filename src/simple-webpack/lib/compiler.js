@@ -15,6 +15,7 @@ module.exports = class Compiler {
     run() {
         const entryModule = this.buildModule(this.entry, true);
         this.modules.push(entryModule);
+        // 广度优先
         this.modules.map((_module) => {
             _module.dependencies.map((dependency) => {
                 this.modules.push(this.buildModule(dependency));
